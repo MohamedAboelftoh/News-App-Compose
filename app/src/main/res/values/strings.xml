@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Compose News App</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="pick_your_category_n_of_interest">Pick Your Category \n Of Interest</string>
+    <string name="news_app">News App</string>
+    <string name="setting">Setting</string>
+    <string name="categories">Categories</string>
+    <string name="sports">Sports</string>
+    <string name="science">Science</string>
+    <string name="politic">Politic</string>
+    <string name="business">Business</string>
+    <string name="health">Health</string>
+    <string name="environment">Environment</string>
+    <string name="language">Language</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="view_full_article">View Full Article</string>
+    <string name="english">English</string>
+    <string name="arabic">Arabic</string>
+    <string name="news_title">News Title</string>
+    <string name="title_activity_main">MainActivity</string>
+</resources>

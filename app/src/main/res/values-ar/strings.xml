@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Compose News App</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="pick_your_category_n_of_interest">اختار الفئة الفائدة الخاصة بك</string>
+    <string name="open">افتح</string>
+    <string name="close">اغلق</string>
+    <string name="setting">الاعدادات</string>
+    <string name="categories">الفائات</string>
+    <string name="sports">الرياضة</string>
+    <string name="science">العلوم</string>
+    <string name="politic">السياسة</string>
+    <string name="business">الاعمال</string>
+    <string name="health">الصحة</string>
+    <string name="environment">البيئة</string>
+    <string name="news_app">برنامج اخبار</string>
+    <string name="language">اللغة</string>
+    <string name="view_full_article">عرض تفاصيل الخبر</string>
+    <string name="english">الانجليزية</string>
+    <string name="arabic">العربية</string>
+    <string name="news_title">عنوان الخبر</string>
+</resources>
