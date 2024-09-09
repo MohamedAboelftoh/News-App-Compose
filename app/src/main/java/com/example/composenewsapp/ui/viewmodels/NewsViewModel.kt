@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.composenewsapp.ui.api.ApiManager
@@ -24,11 +25,11 @@ import javax.inject.Inject
 class NewsViewModel @Inject constructor (
     private val newsUseCase: NewsUseCase ,
     private val sourcesUseCase: SourcesUseCase
-) : ViewModel() {
+) : ViewModel(),NewsViewModelContract.ViewModel{
     var sourcesList = mutableStateOf<List<Source>>(listOf())
     var newsList = mutableStateOf<List<News>>(listOf())
     var selectedIndex = mutableIntStateOf(0)
-    fun getNews(sourceId : String){
+     private fun getNews(sourceId : String){
         viewModelScope.launch{
             try {
                 newsList.value =  newsUseCase.getNews(sourceId)
@@ -37,7 +38,7 @@ class NewsViewModel @Inject constructor (
             }
         }
     }
-    fun getSources(category : String){
+     private fun getSources(category : String){
          viewModelScope.launch {
              try {
                  sourcesList.value =  sourcesUseCase.getSources(category)
@@ -46,4 +47,16 @@ class NewsViewModel @Inject constructor (
              }
         }
     }
+
+    override fun invokeActions(action: NewsViewModelContract.Action) {
+        when(action){
+            is NewsViewModelContract.Action.LoadNews -> {
+                getNews(action.sourceId)
+            }
+            is NewsViewModelContract.Action.LoadSources -> {
+                getSources(action.category)
+            }
+        }
+    }
+
 }

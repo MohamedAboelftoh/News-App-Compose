@@ -36,6 +36,7 @@ import com.example.composenewsapp.R
 import com.example.composenewsapp.ui.api.ApiManager
 import com.example.composenewsapp.ui.theme.primaryColor
 import com.example.composenewsapp.ui.viewmodels.NewsViewModel
+import com.example.composenewsapp.ui.viewmodels.NewsViewModelContract
 import com.example.data.model.SourceDto
 import com.example.data.model.SourcesResponseDto
 import com.example.domain.model.Category
@@ -51,29 +52,13 @@ fun NewsFragment(
     newsViewModel: NewsViewModel = hiltViewModel() ,
     navController: NavController
 ) {
-    newsViewModel.getSources(category!!)
+    newsViewModel.invokeActions(NewsViewModelContract.Action.LoadSources(category!!))
     Column(
         modifier = Modifier.padding(vertical = 10.dp)
     ) {
         SourcesTaps(newsViewModel.sourcesList.value)
         NewsSources(
-            listOf(
-                News(
-                    title = "jknvsi",
-                    publishedAt = "ldf",
-                    author = "kdfbmkd"
-                ),
-                News(
-                    title = "jknvsi",
-                    publishedAt = "ldf",
-                    author = "kdfbmkd"
-                ),
-                News(
-                    title = "jknvsi",
-                    publishedAt = "ldf",
-                    author = "kdfbmkd"
-                ),
-            ),//newsViewModel.newsList.value ,
+            newsViewModel.newsList.value ,
             navController
         )
     }
@@ -92,7 +77,7 @@ fun SourcesTaps(
         ) {
             sourcesItemsList.forEachIndexed { index, source ->
                 if (newsViewModel.selectedIndex.intValue == index) {
-                    newsViewModel.getNews(source.id!!)
+                    newsViewModel.invokeActions(NewsViewModelContract.Action.LoadNews(source.id!!))
                 }
                 Tab(
                     text = { Text(text = source.name!!) },
